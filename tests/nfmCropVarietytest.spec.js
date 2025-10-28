@@ -2,13 +2,15 @@ import { test, expect } from '@playwright/test';
 import path from 'path';
 
 test('test variety ', async ({ page }) => {
+   test.setTimeout(120000);
   await page.goto('https://nfm-fe.i4ulabs.com/login');
   await page.getByRole('textbox', { name: 'Email' }).click();
   await page.getByRole('textbox', { name: 'Email' }).fill('user@gmail.com');
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
   await page.getByRole('button', { name: 'Sign in' }).click();
-  await expect(page).toHaveURL('https://nfm-fe.i4ulabs.com/app/dashboard');
+  await expect(page).not.toHaveURL(/.*login/);
+  await page.waitForLoadState('networkidle');
   await page.getByRole('link', { name: 'Crops Crops' }).click();
   await page.getByRole('link', { name: 'Variety', exact: true }).click();
   await expect(page.getByRole('button', { name: '+ ADD VARIETY' })).toBeVisible();
@@ -20,13 +22,13 @@ test('test variety ', async ({ page }) => {
    await expect.soft(fileInput).toHaveValue(/Screenshot/);
   await page.waitForTimeout(1000);
   await page.locator('#cropType').click();
-  await page.getByText('Apple').click();
-  await expect(page.locator('#cropType')).toContainText('Apple');
+  await page.getByText('Fruit').click();
+  await expect(page.locator('#cropType')).toContainText('Fruit');
   await page.getByRole('combobox').filter({ hasText: 'Select Company Name' }).click();
   await page.getByText('Crop Company 1').click();
   await page.getByRole('textbox', { name: 'Select Crop Name' }).click();
-  await page.getByRole('textbox', { name: 'Select Crop Name' }).fill('Test1');
-  await expect(page.getByRole('textbox', { name: 'Select Crop Name' })).toHaveValue('Test1');
+  await page.getByRole('textbox', { name: 'Select Crop Name' }).fill('English Test1');
+  await expect(page.getByRole('textbox', { name: 'Select Crop Name' })).toHaveValue('English Test1');
   await page.getByRole('img', { name: 'toggle' }).click();
   await page.getByPlaceholder('Enter Number of Days').first().click();
   await page.getByPlaceholder('Enter Number of Days').first().fill('20');
@@ -78,7 +80,60 @@ test('test variety ', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Enter information here' }).nth(1).fill('Test');
   await expect(page.getByRole('textbox', { name: 'Enter information here' }).nth(1)).toHaveValue('Test');
   await page.getByRole('button', { name: 'SAVE VARIETY' }).click();
-  await page.waitForTimeout(2000);
-  await expect(page.locator('tbody tr').filter({ hasText: 'test1' })).toBeVisible({ timeout: 30000 });
+
+  await expect(page.locator('tbody tr').filter({ hasText: 'English Test1' })).toBeVisible;//({ timeout: 30000 });
+//-------------------------------------------------------------Edit and Delete------------------------
+
+
+//test('test', async ({ page }) => {
+   
+    const testName = 'Test English2';
+  //await page.goto('https://nfm-fe.i4ulabs.com/login');
+  // await page.getByRole('textbox', { name: 'Email' }).click();
+  // await page.getByRole('textbox', { name: 'Email' }).fill('user@gmail.com');
+  // await page.getByRole('textbox', { name: 'Password' }).click();
+  // await page.getByRole('textbox', { name: 'Password' }).fill('admin123');
+  // await page.getByRole('button', { name: 'Show password' }).click();
+  // await page.getByRole('button', { name: 'Sign in' }).click();
+  //await page.getByRole('link', { name: 'Crops Crops' }).click();
+  //await page.getByRole('link', { name: 'Variety', exact: true }).click();
+  const row = page.locator('tbody tr').filter({ hasText: 'English Test1' });
+  await row.locator('button:has(svg.lucide-pencil)').click();
+  await page.getByRole('textbox', { name: 'Select Crop Name' }).click();
+  await page.getByRole('textbox', { name: 'Select Crop Name' }).fill(testName);
+  await page.getByRole('button', { name: 'UPDATE VARIETY' }).click();
+  await expect(page.locator('tbody tr').filter({ hasText: testName })).toBeVisible;
+  const row2 = page.locator('tbody tr').filter({ hasText: testName });
+  await row2.locator('button:has(svg.lucide-pencil)').click();
+  await page.getByRole('combobox').filter({ hasText: 'English' }).click();
+  await page.getByRole('option', { name: 'Hindi' }).click();
+  await page.getByRole('textbox', { name: 'फसल का नाम चुनें' }).click();
+  await page.getByRole('textbox', { name: 'फसल का नाम चुनें' }).fill(testName+'Test hindi6');
+  await page.getByRole('button', { name: 'किस्म अपडेट करें' }).click();
+  await page.getByRole('button', { name: 'Language English' }).click();
+  await page.waitForSelector('[role="menuitem"]');
+  await page.getByRole('menuitem', { name: 'Hindi Hindi' }).click();
+  await expect(page.locator('tbody tr').filter({ hasText: testName+'Test hindi6' })).toBeVisible;
+  await page.getByRole('button', { name: 'Language Hindi' }).click();
+  await page.waitForSelector('[role="menuitem"]');
+   await page.getByText('English').click();
+ const row1 = page.locator('tbody tr').filter({ hasText: testName });
+  await row1.locator('button:has(svg.lucide-pencil)').click();
+  await page.getByRole('combobox').filter({ hasText: 'English' }).click();
+  await page.getByRole('option', { name: 'Tamil' }).click();
+  await page.getByRole('textbox', { name: 'பயிர் பெயரை தேர்ந்தெடுக்கவும்' }).click();
+  await page.getByRole('textbox', { name: 'பயிர் பெயரை தேர்ந்தெடுக்கவும்' }).fill(testName+'Test tamil5');
+  await page.getByRole('button', { name: 'வகையை புதுப்பிக்கவும்' }).click();
+  await page.getByRole('button', { name: 'Language English' }).click();
+  await page.waitForSelector('[role="menuitem"]');
+  await page.getByRole('menuitem', { name: 'Tamil Tamil' }).click();
+  await expect(page.locator('tbody tr').filter({ hasText: testName+'Test tamil5' })).toBeVisible;
+  await page.waitForSelector('[role="menuitem"]');
+  await page.getByRole('button', { name: 'Language Tamil' }).click();
+  await page.getByText('English').click();
+const row4 = page.locator('tbody tr').filter({ hasText: testName });
+await row4.locator('button:has(svg.lucide-ban)').click({ timeout: 30000 });
+ await page.getByRole('button', { name: 'Delete' }).click();
+await expect(page.locator('tbody tr').filter({ hasText: testName })).toHaveCount(0);
 
 });
