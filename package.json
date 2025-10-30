@@ -1,5 +1,5 @@
 {
-  "name": "nfm-fe-testing",
+  "name": "test1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,6 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.9.1"
+    "@types/node": "^24.9.2"
   }
 }

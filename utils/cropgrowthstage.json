@@ -1,0 +1,28 @@
+{
+  "create": {
+    "addButtonLabel": "+ ADD STAGE",
+    "stageNameLabel": "Stage Name",
+    "descriptionLabel": "Description",
+    "saveButtonLabel": "Save STAGE",
+    "stageName": "Test Stage 1",
+    "description": "This is a test stage"
+  },
+  "updateEnglish": {
+    "language": "English",
+    "fieldLabel": "Stage Name",
+    "updateButtonLabel": "UPDATE",
+    "newName": "Updated English Stage"
+  },
+  "updateHindi": {
+    "language": "Hindi",
+    "fieldLabel": "अवस्था का नाम",
+    "updateButtonLabel": "अद्यतन करें",
+    "newName": "Updated Hindi Stage"
+  },
+  "updateTamil": {
+    "language": "Tamil",
+    "fieldLabel": "நிலையின் பெயர்",
+    "updateButtonLabel": "புதுப்பிக்கவும்",
+    "newName": "Updated Tamil Stage"
+  }
+}

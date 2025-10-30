@@ -1,0 +1,60 @@
+{
+  "create": {
+    "addButtonLabel": "+ ADD VARIETY",
+    "imagePath": "tests/assets/Screenshot from 2025-10-09 14-41-50.png",
+    "cropType": "Fruit",
+    "companyNameLabel": "Select Company Name",
+    "companyName": "Crop Company 1",
+    "cropNameLabel": "Select Crop Name",
+    "cropName": "English Test1",
+    "numberOfDaysPlaceholder": "Enter Number of Days",
+    "numberOfDays1": "20",
+    "ratePercentagePlaceholder": "Enter rate Percentage",
+    "ratePercentage": "20",
+    "numberOfDays2": "19",
+    "yieldPlaceholder": "Enter Yeild",
+    "yield": "2",
+    "treatmentLabel": "Select Treatment",
+    "treatment": "Untreated",
+    "diseasesLabel": "Enter Diseases(Press Enter to",
+    "diseases": "Test",
+    "weightUnit": "Gms",
+    "packagingSizePlaceholder": "Enter Packaging Size",
+    "packagingSize": "20",
+    "packagingUnitLabel": "Select Packaging Unit",
+    "packagingUnit": "Packet",
+    "numberOfDays3": "19",
+    "spacingValuePlaceholder1": "Enter Spacing Value",
+    "spacingValue1": "2",
+    "selectUnitLabel": "Select Unit",
+    "spacingUnit1": "Cms",
+    "selectUnitPlaceholder": "Select Unit",
+    "spacingValue2": "2",
+    "spacingUnit2": "Mms",
+    "spacingValuePlaceholder2": "Enter spacing value",
+    "spacingValue3": "2",
+    "spacingUnit3": "Inch",
+    "informationLabel": "Enter information here",
+    "information1": "Test",
+    "information2": "Test",
+    "saveButtonLabel": "SAVE VARIETY"
+  },
+  "updateEnglish": {
+    "language": "English",
+    "fieldLabel": "Select Crop Name",
+    "updateButtonLabel": "UPDATE VARIETY",
+    "newName": "Test English2"
+  },
+  "updateHindi": {
+    "language": "Hindi",
+    "fieldLabel": "फसल का नाम चुनें",
+    "updateButtonLabel": "किस्म अपडेट करें",
+    "newName": "Test English2Test hindi6"
+  },
+  "updateTamil": {
+    "language": "Tamil",
+    "fieldLabel": "பயிர் பெயரை தேர்ந்தெடுக்கவும்",
+    "updateButtonLabel": "வகையை புதுப்பிக்கவும்",
+    "newName": "Test English2Test tamil5"
+  }
+}
